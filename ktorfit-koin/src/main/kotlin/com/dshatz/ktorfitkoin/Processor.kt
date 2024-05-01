@@ -1,34 +1,19 @@
 package com.dshatz.ktorfitkoin
 
-import com.google.devtools.ksp.containingFile
 import com.google.devtools.ksp.processing.*
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSDeclaration
-import com.google.devtools.ksp.symbol.KSName
-import java.io.OutputStream
 
-class Processor(val codeGenerator: CodeGenerator, val options: Map<String, String>) : SymbolProcessor {
-
-    lateinit var log: OutputStream
-    fun emit(s: String, indent: String = "") {
-        with(log) {
-            this.write((s + "\n").encodeToByteArray())
-        }
-    }
+class Processor(val codeGenerator: CodeGenerator) : SymbolProcessor {
 
     override fun process(resolver: Resolver): List<KSAnnotated> {
-//        log = codeGenerator.createNewFile(Dependencies(false), "", "KtorfitKoin", "log")
-//        emit("Processing")
-        val ktorFitFiles = resolver.getSymbolsWithAnnotation("de.jensklingenberg.ktorfit.http.GET")
+        val annotations = listOf("GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
+        val ktorFitFiles = annotations.flatMap { resolver.getSymbolsWithAnnotation("de.jensklingenberg.ktorfit.http.$it") }
             .distinctBy {
                 it.location
             }.map { it.parent as KSDeclaration }.groupBy { it.packageName.asString() }
         ktorFitFiles.forEach { (pckg, declarations) ->
             val files = declarations.map { it.containingFile }.filterNotNull().toTypedArray()
-//            emit(file.toString())
-//            emit(pckg)
-//            emit(declarations.toString())
-//            emit("\n")
             val output = codeGenerator.createNewFile(Dependencies(true, sources = files), pckg, "KtorfitModule")
             output.bufferedWriter().use {
                 fun writeLn(t: String) = it.write(t + "\n")
@@ -55,7 +40,7 @@ class Processor(val codeGenerator: CodeGenerator, val options: Map<String, Strin
 
 class Provider: SymbolProcessorProvider {
     override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor {
-        return Processor(environment.codeGenerator, environment.options)
+        return Processor(environment.codeGenerator)
     }
 
 }
