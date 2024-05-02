@@ -26,8 +26,8 @@ jobs:
 
       - name: Display version
         run: |
-          export VERSION=$(echo "${{ steps.get_version.outputs.version }}")
-          echo $VERSION
+          export PUBLISH_VERSION=$(echo "${{ steps.get_version.outputs.version }}")
+          echo $PUBLISH_VERSION
       - name: Build and publish
         shell: bash
         env:
