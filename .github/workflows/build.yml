@@ -1,8 +1,7 @@
 name: Release
 on:
-  push:
-    tags:
-      - 'release/**'
+  release:
+    types: [released]
 
 jobs:
   build-multiplatform-project:
