@@ -9,7 +9,7 @@ plugins {
 }
 
 dependencies {
-  ksp("com.dshatz:ktorfit-koin:1.0.0")
+  ksp("com.dshatz:ktorfit-koin:1.0.1")
   // Also add ktorfit and koin
 }
 ```
