@@ -1,9 +1,8 @@
 name: Release
 on:
   push:
-    branches:
-      - release/*
-  pull_request:
+    tags:
+      - 'release/**'
 
 jobs:
   build-multiplatform-project:
@@ -22,6 +21,14 @@ jobs:
           java-version: '17'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+      - id: get_version
+        name: Get version
+        uses: jannemattila/get-version-from-tag@v3
+
+      - name: Display version
+        run: |
+          export VERSION=$(echo "${{ steps.get_version.outputs.version }}")
+          echo $VERSION
       - name: Build and publish
         shell: bash
         env:

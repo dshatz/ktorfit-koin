@@ -17,7 +17,7 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
 
-    coordinates("com.dshatz", "ktorfit-koin", "1.0.0")
+    coordinates("com.dshatz", "ktorfit-koin", System.getenv("PUBLISH_VERSION"))
 
     pom {
         name.set(project.name)
