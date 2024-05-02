@@ -12,22 +12,25 @@ class Processor(val codeGenerator: CodeGenerator) : SymbolProcessor {
             .distinctBy {
                 it.location
             }.map { it.parent as KSDeclaration }.groupBy { it.packageName.asString() }
-        ktorFitFiles.forEach { (pckg, declarations) ->
+        ktorFitFiles.forEach { pckg, declarations ->
+            // pckg - unique package name
+            // declarations - list of Service declarations in this package.
             val files = declarations.map { it.containingFile }.filterNotNull().toTypedArray()
             val output = codeGenerator.createNewFile(Dependencies(true, sources = files), pckg, "KtorfitModule")
             output.bufferedWriter().use {
                 fun writeLn(t: String) = it.write(t + "\n")
-
-                writeLn("package $pckg")
                 it.write("""
+                    package $pckg
+                    
                     import org.koin.core.module.Module
                     import org.koin.dsl.*
                     import de.jensklingenberg.ktorfit.Ktorfit
                     
+                    public val ktorFitModule: Module = module {
+                    
                 """.trimIndent())
-                writeLn("public val ktorFitModule: Module = module {")
-                declarations.forEach {
-                    writeLn("   single<${it.qualifiedName?.asString()}>() { val ktorFit: Ktorfit = get(); ktorFit.create() } ")
+                declarations.distinctBy { it.qualifiedName?.asString() }.forEach {
+                    writeLn("   single<${it.qualifiedName?.asString()}>() { val ktorFit: Ktorfit = get(); ktorFit.create() }")
                 }
                 writeLn("}")
             }
