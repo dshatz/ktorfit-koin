@@ -15,7 +15,7 @@ buildscript {
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            val suffix = System.getenv("flavor")
+            val suffix = System.getenv("FLAVOR")
             from(files("gradle/libs.versions.$suffix.toml"))
         }
     }
