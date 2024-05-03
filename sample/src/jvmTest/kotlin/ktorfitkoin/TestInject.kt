@@ -1,5 +1,6 @@
-package com.dshatz.ktorfitkoin
+package ktorfitkoin
 
+import com.dshatz.ktorfitkoin.Module
 import com.dshatz.ktorfitkoin.service.IPService
 import io.ktor.client.*
 import io.ktor.client.engine.*

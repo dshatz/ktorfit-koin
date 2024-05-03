@@ -9,9 +9,10 @@ import org.koin.core.context.GlobalContext.get
 import org.koin.core.context.startKoin
 import org.koin.ksp.generated.module
 
+
 fun main() {
     startKoin {
-        modules(com.dshatz.ktorfitkoin.Module().module)
+        modules(modules = listOf(com.dshatz.ktorfitkoin.Module().module))
     }
 
     val service: PriceService = get().get()
@@ -25,7 +26,5 @@ fun main() {
 }
 
 @Module(includes = [KtorfitModule::class])
-@ComponentScan("com.dshatz.ktorfit")
-class Module() {
-
-}
+@ComponentScan("com.dshatz.ktorfitkoin")
+class Module
