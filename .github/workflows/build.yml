@@ -34,4 +34,5 @@ jobs:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVENCENTRALUSERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVENCENTRALPASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNINGINMEMORYKEY }}
+          PUBLISH_VERSION: ${{ steps.get_version.outputs.version }}
         run: ./gradlew ktorfit-koin:publishAllPublicationsToMavenCentralRepository
