@@ -33,6 +33,12 @@ class Processor(val codeGenerator: CodeGenerator) : SymbolProcessor {
                     writeLn("   single<${it.qualifiedName?.asString()}>() { val ktorFit: Ktorfit = get(); ktorFit.create() }")
                 }
                 writeLn("}")
+                it.write("""
+                    class KtorFitModule {
+                        val module: Module get() = ktorFitModule
+                    }
+//                    val KtorFitModule.module: Module get() = ktorFitModule
+                """.trimIndent())
             }
 
         }
