@@ -1,7 +1,7 @@
 name: Release
 on:
   release:
-    types: [released]
+    types: [released, edited]
 
 env:
   ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVENCENTRALUSERNAME }}
