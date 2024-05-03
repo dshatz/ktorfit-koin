@@ -3,6 +3,12 @@ on:
   release:
     types: [released]
 
+env:
+  ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVENCENTRALUSERNAME }}
+  ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVENCENTRALPASSWORD }}
+  ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNINGINMEMORYKEY }}
+  PUBLISH_VERSION: ${{ steps.get_version.outputs.version }}
+
 jobs:
   build-multiplatform-project:
     environment: release
@@ -31,8 +37,14 @@ jobs:
       - name: Build and publish
         shell: bash
         env:
-          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVENCENTRALUSERNAME }}
-          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVENCENTRALPASSWORD }}
-          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNINGINMEMORYKEY }}
-          PUBLISH_VERSION: ${{ steps.get_version.outputs.version }}
-        run: ./gradlew ktorfit-koin:publishAllPublicationsToMavenCentralRepository
+          FLAVOR: 1.9.23
+        run: |
+          gradle sample:check
+          gradle ktorfit-koin:publishAllPublicationsToMavenCentralRepository
+      - name: Build and publish
+        shell: bash
+        env:
+          FLAVOR: 2.0-RC1
+        run: |
+          gradle sample:check
+          gradle ktorfit-koin:publishAllPublicationsToMavenCentralRepository

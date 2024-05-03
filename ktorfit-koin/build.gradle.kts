@@ -17,7 +17,9 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
     signAllPublications()
 
-    coordinates("com.dshatz", "ktorfit-koin", System.getenv("PUBLISH_VERSION"))
+    val version = System.getenv("PUBLISH_VERSION")
+    val flavor = System.getenv("FLAVOR")
+    coordinates("com.dshatz", "ktorfit-koin", "$version-kotlin-$flavor")
 
     pom {
         name.set(project.name)

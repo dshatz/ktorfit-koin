@@ -26,7 +26,7 @@ class Processor(val codeGenerator: CodeGenerator) : SymbolProcessor {
                     import org.koin.dsl.*
                     import de.jensklingenberg.ktorfit.Ktorfit
                     
-                    public val ktorFitModule: Module = module {
+                    val ktorFitModule: Module = module {
                     
                 """.trimIndent())
                 declarations.distinctBy { it.qualifiedName?.asString() }.forEach {
@@ -37,7 +37,6 @@ class Processor(val codeGenerator: CodeGenerator) : SymbolProcessor {
                     class KtorFitModule {
                         val module: Module get() = ktorFitModule
                     }
-//                    val KtorFitModule.module: Module get() = ktorFitModule
                 """.trimIndent())
             }
 
