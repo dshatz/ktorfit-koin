@@ -41,6 +41,7 @@ jobs:
         run: |
           gradle sample:check --refresh-dependencies
           gradle ktorfit-koin:publishAllPublicationsToMavenCentralRepository
+          gradle lib:publishAllPublicationsToMavenCentralRepository
       - name: Build and publish
         shell: bash
         env:
@@ -49,3 +50,4 @@ jobs:
         run: |
           gradle sample:check --refresh-dependencies
           gradle ktorfit-koin:publishAllPublicationsToMavenCentralRepository
+          gradle lib:publishAllPublicationsToMavenCentralRepository
