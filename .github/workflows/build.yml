@@ -39,7 +39,7 @@ jobs:
           FLAVOR: 1.9.23
           PUBLISH_VERSION: ${{ steps.get_version.outputs.version }}
         run: |
-          gradle sample:check
+          gradle sample:check --refresh-dependencies
           gradle ktorfit-koin:publishAllPublicationsToMavenCentralRepository
       - name: Build and publish
         shell: bash
@@ -47,5 +47,5 @@ jobs:
           FLAVOR: 2.0-RC1
           PUBLISH_VERSION: ${{ steps.get_version.outputs.version }}
         run: |
-          gradle sample:check
+          gradle sample:check --refresh-dependencies
           gradle ktorfit-koin:publishAllPublicationsToMavenCentralRepository
