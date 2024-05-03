@@ -1,8 +1,7 @@
 package com.dshatz.ktorfitkoin
 
-import com.dshatz.ktorfitkoin.binance.IPService
-import com.dshatz.ktorfitkoin.binance.KtorFitModule
-import com.dshatz.ktorfitkoin.binance.PriceService
+import com.dshatz.ktorfitkoin.service.IPService
+import com.dshatz.ktorfitkoin.service.PriceService
 import kotlinx.coroutines.runBlocking
 import org.koin.core.annotation.ComponentScan
 import org.koin.core.annotation.Module
@@ -25,7 +24,7 @@ fun main() {
     }
 }
 
-@Module(includes = [KtorFitModule::class])
+@Module(includes = [KtorfitModule::class])
 @ComponentScan("com.dshatz.ktorfit")
 class Module() {
 

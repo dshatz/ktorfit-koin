@@ -21,6 +21,7 @@ dependencies {
     ksp(libs.koin.kspCompiler)
     ksp(libs.ktorfit.ksp)
     ksp(project(":ktorfit-koin"))
+    implementation(project(":ktorfit-koin"))
     testImplementation(kotlin("test"))
     testImplementation(libs.koin.test)
     testImplementation(libs.coroutines.test)

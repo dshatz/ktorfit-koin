@@ -1,5 +1,6 @@
 package com.dshatz.ktorfitkoin
 
+import com.dshatz.ktorfitkoin.annotation.ServiceModule
 import de.jensklingenberg.ktorfit.Ktorfit
 import io.ktor.client.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -24,4 +25,9 @@ fun http(json: Json): HttpClient {
 @Single
 fun ktorFit(http: HttpClient): Ktorfit {
     return Ktorfit.Builder().httpClient(http).build()
+}
+
+@ServiceModule("com.dshatz.ktorfitkoin.service")
+class KtorfitModule {
+
 }

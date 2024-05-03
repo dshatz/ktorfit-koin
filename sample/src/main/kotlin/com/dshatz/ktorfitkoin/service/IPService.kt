@@ -1,4 +1,4 @@
-package com.dshatz.ktorfitkoin.binance
+package com.dshatz.ktorfitkoin.service
 
 import de.jensklingenberg.ktorfit.http.GET
 
