@@ -9,7 +9,9 @@ plugins {
 }
 
 dependencies {
-  ksp("com.dshatz:ktorfit-koin:1.0.2")
+  ksp("com.dshatz:ktorfit-koin:1.0.3-kotlin-1.9.23")
+  // or for kotlin-2.0-RC1
+  ksp("com.dshatz:ktorfit-koin:1.0.3-kotlin-2.0-RC1")
   // Also add ktorfit and koin
 }
 ```
