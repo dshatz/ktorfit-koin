@@ -1,20 +1,17 @@
 # Generate a [Koin](https://github.com/InsertKoinIO/koin) module from your [Ktorfit](https://github.com/Foso/Ktorfit) services.
 
 This ksp processor will find all Ktorfit services and create a Koin module with those.
+Compiled with Kotlin 2.0.21. Please report compatibility with earlier/later versions.
 
 ## 1. Add KSP and Ktorfit-Koin
 ```kotlin
 plugins {
-  id("com.google.devtools.ksp") version "1.9.23-1.0.20"
+  // Add ksp
 }
 
 dependencies {
-  ksp("com.dshatz:ktorfit-koin:1.0.4-kotlin-1.9.23")
-  implementation("com.dshatz:ktorfit-koin:1.0.4-kotlin-1.9.23")
-  // or for kotlin-2.0-RC1
-  ksp("com.dshatz:ktorfit-koin:1.0.4-kotlin-2.0-RC1")
-  implementation("com.dshatz:ktorfit-koin:1.0.4-kotlin-2.0-RC1")
-
+  ksp("com.dshatz:ktorfit-koin:1.0.5")
+  implementation("com.dshatz:ktorfit-koin:1.0.5")
   // Also add ktorfit and koin
 }
 ```
