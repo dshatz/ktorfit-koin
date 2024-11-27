@@ -75,3 +75,6 @@ This project is experimental and was made to address my usecase.
 I do aim to make it useful for others, so if your usecase does not work, create an issue with examples and I'll do my best.
 
 Support for other kotlin, ksp and ktor versions will be added later.
+
+## Known issues
+Koin config check will not work. See koin-annotations [issue](https://github.com/InsertKoinIO/koin-annotations/issues/192).
