@@ -10,8 +10,8 @@ plugins {
 }
 
 dependencies {
-  ksp("com.dshatz:ktorfit-koin:1.0.6")
-  implementation("com.dshatz:ktorfit-koin-lib:1.0.6")
+  ksp("com.dshatz:ktorfit-koin:1.1.0")
+  implementation("com.dshatz:ktorfit-koin-lib:1.1.0")
   // Also add ktorfit and koin
 }
 ```
