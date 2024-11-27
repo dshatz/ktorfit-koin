@@ -10,8 +10,8 @@ plugins {
 }
 
 dependencies {
-  ksp("com.dshatz:ktorfit-koin:1.0.5")
-  implementation("com.dshatz:ktorfit-koin:1.0.5")
+  ksp("com.dshatz:ktorfit-koin:1.0.6")
+  implementation("com.dshatz:ktorfit-koin-lib:1.0.6")
   // Also add ktorfit and koin
 }
 ```
@@ -65,13 +65,11 @@ or
 val service: PriceService by get().inject()
 ```
 
+# Compile-time safety
+This library supports KOIN_CONFIG_CHECK.
+
 # Stability
 
 This project is experimental and was made to address my usecase. 
 
-I do aim to make it useful for others, so if your usecase does not work, create an issue with examples and I'll do my best.
-
-Support for other kotlin, ksp and ktor versions will be added later.
-
-## Known issues
-Koin config check will not work. See koin-annotations [issue](https://github.com/InsertKoinIO/koin-annotations/issues/192).
+I do aim to make it useful for others, so if your usecase does not work, create an issue with examples, and I'll do my best.
