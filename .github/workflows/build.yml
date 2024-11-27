@@ -28,7 +28,6 @@ jobs:
       - id: get_version
         name: Get version
         uses: jannemattila/get-version-from-tag@v3
-
       - name: Display version
         run: |
           export PUBLISH_VERSION=$(echo "${{ steps.get_version.outputs.version }}")
@@ -36,16 +35,6 @@ jobs:
       - name: Build and publish
         shell: bash
         env:
-          FLAVOR: 1.9.23
-          PUBLISH_VERSION: ${{ steps.get_version.outputs.version }}
-        run: |
-          gradle sample:check --refresh-dependencies
-          gradle ktorfit-koin:publishAllPublicationsToMavenCentralRepository
-          gradle lib:publishAllPublicationsToMavenCentralRepository
-      - name: Build and publish
-        shell: bash
-        env:
-          FLAVOR: 2.0-RC1
           PUBLISH_VERSION: ${{ steps.get_version.outputs.version }}
         run: |
           gradle sample:check --refresh-dependencies

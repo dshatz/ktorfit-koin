@@ -63,9 +63,6 @@ dependencies {
 /*tasks.test {
     useJUnitPlatform()
 }*/
-kotlin {
-    jvmToolchain(17)
-}
 
 /*android {
     namespace = "com.dshatz.ktorfitkoin"
@@ -80,7 +77,6 @@ tasks.test {
     useJUnitPlatform()
 }*/
 
-/*
-ksp {
+/*ksp {
     arg("KOIN_CONFIG_CHECK","true")
 }*/

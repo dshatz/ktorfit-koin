@@ -47,8 +47,7 @@ mavenPublishing {
     signAllPublications()
 
     val version = System.getenv("PUBLISH_VERSION")
-    val flavor = System.getenv("FLAVOR")
-    coordinates("com.dshatz", "ktorfit-koin-lib", "$version-kotlin-$flavor")
+    coordinates("com.dshatz", "ktorfit-koin-lib", version)
 
     pom {
         name.set(project.name)

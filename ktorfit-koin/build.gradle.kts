@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.google.devtools.ksp:symbol-processing-api:1.9.23-1.0.20")
+    implementation(libs.ksp.api)
 }
 
 mavenPublishing {
@@ -18,8 +18,7 @@ mavenPublishing {
     signAllPublications()
 
     val version = System.getenv("PUBLISH_VERSION")
-    val flavor = System.getenv("FLAVOR")
-    coordinates("com.dshatz", "ktorfit-koin", "$version-kotlin-$flavor")
+    coordinates("com.dshatz", "ktorfit-koin", version)
 
     pom {
         name.set(project.name)

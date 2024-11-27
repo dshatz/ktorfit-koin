@@ -12,14 +12,6 @@ buildscript {
     }
 }
 
-dependencyResolutionManagement {
-    versionCatalogs {
-        create("libs") {
-            val suffix = System.getenv("FLAVOR")
-            from(files("gradle/libs.versions.$suffix.toml"))
-        }
-    }
-}
 rootProject.name = "ktorfit-koin"
 include(":ktorfit-koin")
 include(":lib")

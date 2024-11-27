@@ -8,6 +8,7 @@ import org.koin.core.annotation.Module
 import org.koin.core.context.GlobalContext.get
 import org.koin.core.context.startKoin
 import org.koin.ksp.generated.module
+import java.net.SocketException
 
 
 fun main() {
@@ -19,9 +20,11 @@ fun main() {
     val ipService: IPService by get().inject()
 
     runBlocking {
-        println("BTC Price: ${service.getCurrentPrice("BTCEUR").price}")
-        println("Current IP: ${ipService.getIP()}")
-        println("Current IP6: ${ipService.getIP6()}")
+        println("BTC Price: ${service.getCurrentPrice("BTCEUR").price} EUR")
+        println("Current IPv4: ${ipService.getIP()}")
+        println("Current IPv6: ${
+            kotlin.runCatching { ipService.getIP6() }.recover { if (it is SocketException) "Not supported" else throw it }.getOrThrow()
+        }")
     }
 }
 
