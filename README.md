@@ -41,10 +41,10 @@ class NetworkModule
 ```kotlin
   @Single
   fun provideKtorfit(): Ktorfit {
-    return Ktorfit.Bulder().build()
+    return Ktorfit.Builder().build()
   }
 
-  @Module(include = [NetworkModule::class])
+  @Module(includes = [NetworkModule::class])
   @ComponentScan(...)
   class MyModule
 
