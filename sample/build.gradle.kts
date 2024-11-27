@@ -77,6 +77,6 @@ tasks.test {
     useJUnitPlatform()
 }*/
 
-/*ksp {
+ksp {
     arg("KOIN_CONFIG_CHECK","true")
-}*/
+}

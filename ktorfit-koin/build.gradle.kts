@@ -11,6 +11,10 @@ repositories {
 
 dependencies {
     implementation(libs.ksp.api)
+    implementation(libs.kotlinpoet)
+    implementation(libs.kotlinpoetksp)
+    implementation(libs.koin.core)
+    implementation(libs.ktorfit)
 }
 
 mavenPublishing {
